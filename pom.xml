@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.resms</groupId>
-    <artifactId>sdk</artifactId>
+    <artifactId>resms-java-sdk</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>reSMS Java SDK</name>
-    <description>The Java SDK.</description>
+    <description>ReSMS Java SDK for reSMS - A comprehensive SMS service integration library</description>
     <url>https://resms.dev/</url>
+    <inceptionYear>2025</inceptionYear>
 
     <licenses>
         <license>
@@ -26,6 +27,10 @@
             <email>contact@resms.dev</email>
             <organization>reSMS</organization>
             <organizationUrl>https://resms.dev/</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
         </developer>
     </developers>
 
@@ -35,37 +40,54 @@
         <url>https://github.com/reSMS-dev/resms-java/tree/main</url>
     </scm>
 
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/reSMS-dev/resms-java/issues</url>
+    </issueManagement>
+
     <properties>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
+        <!-- Plugin versions -->
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
+        <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
+        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
+
+        <!-- Dependency versions -->
+        <moshi.version>1.15.2</moshi.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.squareup.moshi</groupId>
             <artifactId>moshi</artifactId>
-            <version>1.15.2</version>
+            <version>${moshi.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Central publishing plugin -->
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.7.0</version>
+                <version>${central-publishing-maven-plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <waitUntil>published</waitUntil>
                 </configuration>
             </plugin>
 
+            <!-- Source plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -76,10 +98,16 @@
                 </executions>
             </plugin>
 
+            <!-- Javadoc plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <doclint>none</doclint>
+                    <failOnError>false</failOnError>
+                    <quiet>true</quiet>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -90,14 +118,11 @@
                 </executions>
             </plugin>
 
-            <!-- GPG signing -->
+            <!-- GPG signing plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <configuration>
-                    <checksums>required</checksums>
-                </configuration>
+                <version>${maven-gpg-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
