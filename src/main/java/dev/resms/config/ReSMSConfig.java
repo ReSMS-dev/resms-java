@@ -29,7 +29,7 @@ public class ReSMSConfig {
         return timeoutSeconds;
     }
 
-    public String getUrl() {
+    public String getBaseUrl() {
         return BASE_URL;
     }
 

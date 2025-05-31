@@ -1,20 +1,21 @@
 package dev.resms;
+
 import dev.resms.config.ReSMSConfig;
-import dev.resms.service.SmsService;
 import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
+import dev.resms.service.SmsService;
 
 /**
  * ReSMS Java SDK - Client principal
  */
 public class ReSMS {
-    private final SmsService smsService;
     private static final int DEFAULT_TIMEOUT = 10;
+    private final SmsService smsService;
 
     /**
      * Creates a new ReSMS client
      *
-     * @param apiKey API key for authentication
+     * @param apiKey         API key for authentication
      * @param timeoutSeconds HTTP request timeout in seconds
      */
     public ReSMS(String apiKey, int timeoutSeconds) {
@@ -34,7 +35,7 @@ public class ReSMS {
     /**
      * Sends an SMS message - Main method
      *
-     * @param to Phone number to send the message to
+     * @param to      Phone number to send the message to
      * @param message Message content
      * @return SendSmsResponse containing the message ID and status
      * @throws Exception if fails

@@ -16,6 +16,8 @@ import java.time.Duration;
  * Generic API client for HTTP requests
  */
 public class SmsRepository {
+    private static final String SEND_SMS_PATH = "sms/send";
+
     private final ReSMSConfig config;
     private final JsonAdapter<SendSmsRequest> requestAdapter;
     private final JsonAdapter<SendSmsResponse> responseAdapter;
@@ -43,7 +45,7 @@ public class SmsRepository {
         String jsonBody = requestAdapter.toJson(requestBody);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(config.getUrl() + "sms/send"))
+                .uri(URI.create(config.getBaseUrl() + SEND_SMS_PATH))
                 .header("Content-Type", "application/json")
                 .header("x-api-key", config.getApiKey())
                 .timeout(Duration.ofSeconds(config.getTimeoutSeconds()))
