@@ -1,10 +1,10 @@
-package resms.repository;
+package dev.resms.repository;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
-import resms.config.ReSMSConfig;
-import resms.model.request.SendSmsRequest;
-import resms.model.response.SendSmsResponse;
+import dev.resms.config.ReSMSConfig;
+import dev.resms.model.request.SendSmsRequest;
+import dev.resms.model.response.SendSmsResponse;
 
 import java.net.URI;
 import java.net.http.HttpRequest;

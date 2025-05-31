@@ -1,4 +1,4 @@
-package resms.model.request;
+package dev.resms.model.request;
 
 import com.squareup.moshi.Json;
 

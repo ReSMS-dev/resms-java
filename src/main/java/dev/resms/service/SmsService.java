@@ -1,10 +1,10 @@
-package resms.service;
+package dev.resms.service;
 
-import resms.repository.SmsRepository;
-import resms.config.ReSMSConfig;
-import resms.model.request.SendSmsRequest;
-import resms.model.response.SendSmsResponse;
-import resms.util.ValidationUtil;
+import dev.resms.repository.SmsRepository;
+import dev.resms.config.ReSMSConfig;
+import dev.resms.model.request.SendSmsRequest;
+import dev.resms.model.response.SendSmsResponse;
+import dev.resms.util.ValidationUtil;
 
 /**
  * SMS service for sending SMS messages

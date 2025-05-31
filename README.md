@@ -3,10 +3,10 @@ Java SDK for ReSMS, a simple and powerful SMS API.
 
 ## Installation
 
-```maven
+```xml
 <dependency>
     <groupId>dev.resms</groupId>
-    <artifactId>resms-java</artifactId>
+    <artifactId>resms-java-sdk</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -59,8 +59,8 @@ The SDK throws different types of exceptions:
 
 ```InterruptedException```: Thrown if the HTTP request is interrupted.
 
-## Documentation
-The full documentation is available at [resms.dev/docs](https://resms.dev/docs).
+## Documentationc
+The full documentation is available at [dev.resms.dev/docs](https://resms.dev/docs).
 
 ## License
 This project is licensed under the MIT License.

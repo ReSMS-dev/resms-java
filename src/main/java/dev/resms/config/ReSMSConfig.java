@@ -1,5 +1,4 @@
-package resms.config;
-
+package dev.resms.config;
 
 import java.net.http.HttpClient;
 import java.time.Duration;

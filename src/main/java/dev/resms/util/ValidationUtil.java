@@ -1,6 +1,6 @@
-package resms.util;
+package dev.resms.util;
 
-import resms.model.request.SendSmsRequest;
+import dev.resms.model.request.SendSmsRequest;
 
 public class ValidationUtil {
 

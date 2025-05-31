@@ -1,8 +1,8 @@
-package resms;
-import resms.config.ReSMSConfig;
-import resms.service.SmsService;
-import resms.model.request.SendSmsRequest;
-import resms.model.response.SendSmsResponse;
+package dev.resms;
+import dev.resms.config.ReSMSConfig;
+import dev.resms.service.SmsService;
+import dev.resms.model.request.SendSmsRequest;
+import dev.resms.model.response.SendSmsResponse;
 
 /**
  * ReSMS Java SDK - Client principal
