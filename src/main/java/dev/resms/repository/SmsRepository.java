@@ -52,7 +52,7 @@ public class SmsRepository {
         String jsonBody = requestAdapter.toJson(requestBody);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(config.getBaseUrl() + SEND_SMS_PATH))
+                .uri(URI.create(ReSMSConfig.BASE_URL + SEND_SMS_PATH))
                 .header("Content-Type", "application/json")
                 .header("X-Api-Key", config.getApiKey())
                 .timeout(Duration.ofSeconds(config.getTimeoutSeconds()))

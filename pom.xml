@@ -60,6 +60,7 @@
         <httpcore5.version>5.3.4</httpcore5.version>
         <junit.version>5.13.0</junit.version>
         <lombok.version>1.18.38</lombok.version>
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
         <moshi.version>1.15.2</moshi.version>
     </properties>
 
@@ -93,6 +94,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>

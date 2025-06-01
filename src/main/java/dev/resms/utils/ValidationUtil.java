@@ -1,4 +1,4 @@
-package dev.resms.util;
+package dev.resms.utils;
 
 import dev.resms.exception.ReSMSException;
 import dev.resms.model.request.SendSmsRequest;

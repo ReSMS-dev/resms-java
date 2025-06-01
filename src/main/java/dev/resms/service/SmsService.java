@@ -5,7 +5,7 @@ import dev.resms.exception.ReSMSException;
 import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
 import dev.resms.repository.SmsRepository;
-import dev.resms.util.ValidationUtil;
+import dev.resms.utils.ValidationUtil;
 
 /**
  * SMS service for sending SMS messages
