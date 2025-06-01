@@ -12,8 +12,12 @@ public class ValidationUtil {
      * @throws ReSMSException if the phone number is invalid
      */
     public static void validatePhoneNumber(String phoneNumber) throws ReSMSException {
-        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+        if (phoneNumber == null) {
             throw new ReSMSException("Phone number is required");
+        }
+
+        if (phoneNumber.trim().isEmpty()) {
+            throw new ReSMSException("Phone number cannot be empty");
         }
 
         String cleanNumber = phoneNumber.trim();

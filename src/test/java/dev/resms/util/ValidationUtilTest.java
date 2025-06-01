@@ -16,7 +16,7 @@ class ValidationUtilTest {
     @Test
     void testValidatePhoneNumber_emptyNumber() {
         ReSMSException ex = assertThrows(ReSMSException.class, () -> ValidationUtil.validatePhoneNumber("  "));
-        assertEquals("Phone number is required", ex.getMessage());
+        assertEquals("Phone number cannot be empty", ex.getMessage());
     }
 
     @Test
