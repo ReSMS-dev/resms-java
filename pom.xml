@@ -57,6 +57,7 @@
         <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
 
         <!-- Dependency versions -->
+        <httpcore5.version>5.3.4</httpcore5.version>
         <lombok.version>1.18.38</lombok.version>
         <moshi.version>1.15.2</moshi.version>
     </properties>
@@ -68,11 +69,17 @@
             <version>${moshi.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
+            <version>${httpcore5.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
     <build>

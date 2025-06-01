@@ -1,22 +1,12 @@
 package dev.resms.model.response;
 
-import com.squareup.moshi.Json;
+import lombok.Getter;
 
 /**
  * Response object returned after sending an SMS
  */
+@Getter
 public class SendSmsResponse {
-    @Json(name = "id")
-    private String id;
-
-    @Json(name = "status")
-    private String status;
-
-    @Override
-    public String toString() {
-        return "SendSmsResponse{" +
-                "id='" + id + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
+    private String messageId;
+    private String pinPointMessageId;
 }

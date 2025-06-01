@@ -1,9 +1,10 @@
 package dev.resms.service;
 
-import dev.resms.repository.SmsRepository;
 import dev.resms.config.ReSMSConfig;
+import dev.resms.exception.ReSMSException;
 import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
+import dev.resms.repository.SmsRepository;
 import dev.resms.util.ValidationUtil;
 
 /**
@@ -19,16 +20,16 @@ public class SmsService {
     /**
      * Sends an SMS message
      *
-     * @param to Phone number to send the message to
+     * @param to      Phone number to send the message to
      * @param message Message content
      * @return SendSmsResponse containing the message ID and status
-     * @throws Exception if fails
+     * @throws ReSMSException if fails
      */
-    public SendSmsResponse send(String to, String message) throws Exception {
+    public SendSmsResponse send(String to, String message) throws ReSMSException {
         ValidationUtil.validatePhoneNumber(to);
         ValidationUtil.validateMessage(message);
         SendSmsRequest request = new SendSmsRequest(to, message);
-        return apiClient.post(request);
+        return apiClient.sendSms(request);
     }
 
     /**
@@ -36,10 +37,10 @@ public class SmsService {
      *
      * @param request SendSmsRequest object
      * @return SendSmsResponse containing the message ID and status
-     * @throws Exception if fails
+     * @throws ReSMSException if fails
      */
-    public SendSmsResponse send(SendSmsRequest request) throws Exception {
+    public SendSmsResponse send(SendSmsRequest request) throws ReSMSException {
         ValidationUtil.validateSendSmsRequest(request);
-        return apiClient.post(request);
+        return apiClient.sendSms(request);
     }
 }
