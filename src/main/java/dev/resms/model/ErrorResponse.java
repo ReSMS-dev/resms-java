@@ -3,8 +3,7 @@ package dev.resms.model;
 import lombok.Getter;
 
 @Getter
-public class ErrorResponse {
-    private String status;
+public class ErrorResponse extends Response {
     private ErrorDetails error;
 
     @Getter

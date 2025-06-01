@@ -71,7 +71,6 @@ public class SmsRepository {
 
         if (httpResponse.statusCode() == HttpStatus.SC_OK) {
             try {
-                //TODO change to good structure
                 return responseAdapter.fromJson(httpResponse.body());
             } catch (IOException e) {
                 throw new ReSMSException("Failed to parse response body", e);

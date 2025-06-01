@@ -1,12 +1,17 @@
 package dev.resms.model.response;
 
+import dev.resms.model.Response;
 import lombok.Getter;
 
 /**
  * Response object returned after sending an SMS
  */
 @Getter
-public class SendSmsResponse {
-    private String messageId;
-    private String pinPointMessageId;
+public class SendSmsResponse extends Response {
+    private SensSmsResponseData data;
+
+    @Getter
+    public static class SensSmsResponseData {
+        private String messageId;
+    }
 }
