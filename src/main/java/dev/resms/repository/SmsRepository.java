@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.Duration;
 import org.apache.hc.core5.http.HttpStatus;
 
 /** Generic API client for HTTP requests */
@@ -53,7 +52,6 @@ public class SmsRepository {
             .uri(URI.create(ReSMSConfig.BASE_URL + SEND_SMS_PATH))
             .header("Content-Type", "application/json")
             .header("X-Api-Key", config.getApiKey())
-            .timeout(Duration.ofSeconds(config.getTimeoutSeconds()))
             .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
             .build();
 

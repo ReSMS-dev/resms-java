@@ -5,10 +5,10 @@ import dev.resms.exception.ReSMSException;
 import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
 import dev.resms.service.SmsService;
+import lombok.NonNull;
 
 /** ReSMS Java SDK - Client principal */
 public class ReSMS {
-  private static final int DEFAULT_TIMEOUT = 10;
   private final SmsService smsService;
 
   /**
@@ -17,7 +17,7 @@ public class ReSMS {
    * @param apiKey API key for authentication
    * @param timeoutSeconds HTTP request timeout in seconds
    */
-  public ReSMS(String apiKey, int timeoutSeconds) {
+  public ReSMS(@NonNull String apiKey, int timeoutSeconds) {
     ReSMSConfig config = new ReSMSConfig(apiKey, timeoutSeconds);
     this.smsService = new SmsService(config);
   }
@@ -27,8 +27,13 @@ public class ReSMS {
    *
    * @param apiKey API key for authentication
    */
-  public ReSMS(String apiKey) {
-    this(apiKey, DEFAULT_TIMEOUT);
+  public ReSMS(@NonNull String apiKey) {
+    ReSMSConfig config = new ReSMSConfig(apiKey);
+    this.smsService = new SmsService(config);
+  }
+
+  public ReSMS(@NonNull ReSMSConfig config) {
+    this.smsService = new SmsService(config);
   }
 
   /**
@@ -39,7 +44,7 @@ public class ReSMS {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(String to, String message) throws ReSMSException {
+  public SendSmsResponse send(@NonNull String to, @NonNull String message) throws ReSMSException {
     return smsService.send(to, message);
   }
 
@@ -50,7 +55,7 @@ public class ReSMS {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(SendSmsRequest request) throws ReSMSException {
+  public SendSmsResponse send(@NonNull SendSmsRequest request) throws ReSMSException {
     return smsService.send(request);
   }
 }

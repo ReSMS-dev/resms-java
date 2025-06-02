@@ -6,12 +6,13 @@ import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
 import dev.resms.repository.SmsRepository;
 import dev.resms.utils.ValidationUtil;
+import lombok.NonNull;
 
 /** SMS service for sending SMS messages */
 public class SmsService {
   private final SmsRepository apiClient;
 
-  public SmsService(ReSMSConfig config) {
+  public SmsService(@NonNull ReSMSConfig config) {
     this.apiClient = new SmsRepository(config);
   }
 
@@ -23,7 +24,7 @@ public class SmsService {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(String to, String message) throws ReSMSException {
+  public SendSmsResponse send(@NonNull String to, @NonNull String message) throws ReSMSException {
     ValidationUtil.validatePhoneNumber(to);
     ValidationUtil.validateMessage(message);
     SendSmsRequest request = new SendSmsRequest(to, message);
@@ -37,7 +38,7 @@ public class SmsService {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(SendSmsRequest request) throws ReSMSException {
+  public SendSmsResponse send(@NonNull SendSmsRequest request) throws ReSMSException {
     ValidationUtil.validateSendSmsRequest(request);
     return apiClient.sendSms(request);
   }
