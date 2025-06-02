@@ -6,10 +6,10 @@ import lombok.Getter;
 /** Response object returned after sending an SMS */
 @Getter
 public class SendSmsResponse extends Response {
-  private SensSmsResponseData data;
+  private SendSmsResponseData data;
 
   @Getter
-  public static class SensSmsResponseData {
+  public static class SendSmsResponseData {
     private String messageId;
   }
 }
