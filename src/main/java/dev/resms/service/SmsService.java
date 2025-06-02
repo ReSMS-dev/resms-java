@@ -1,19 +1,19 @@
 package dev.resms.service;
 
+import dev.resms.api.ReSMSApiClient;
 import dev.resms.config.ReSMSConfig;
 import dev.resms.exception.ReSMSException;
 import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
-import dev.resms.repository.SmsRepository;
 import dev.resms.validator.SendSmsValidator;
 import lombok.NonNull;
 
 /** SMS service for sending SMS messages */
 public class SmsService {
-  private final SmsRepository apiClient;
+  private final ReSMSApiClient apiClient;
 
   public SmsService(@NonNull ReSMSConfig config) {
-    this.apiClient = new SmsRepository(config);
+    this.apiClient = new ReSMSApiClient(config);
   }
 
   /**

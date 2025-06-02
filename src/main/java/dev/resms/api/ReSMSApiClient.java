@@ -1,4 +1,4 @@
-package dev.resms.repository;
+package dev.resms.api;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -18,8 +18,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.apache.hc.core5.http.HttpStatus;
 
-/** Generic API client for HTTP requests */
-public class SmsRepository {
+public class ReSMSApiClient {
   private static final String SEND_SMS_PATH = "sms/send";
 
   private final ReSMSConfig config;
@@ -27,7 +26,7 @@ public class SmsRepository {
   private final JsonAdapter<SendSmsResponse> responseAdapter;
   private final JsonAdapter<ErrorResponse> errorResponseAdapter;
 
-  public SmsRepository(ReSMSConfig config) {
+  public ReSMSApiClient(ReSMSConfig config) {
     this.config = config;
 
     Moshi moshi = new Moshi.Builder().build();
@@ -37,13 +36,6 @@ public class SmsRepository {
     this.errorResponseAdapter = moshi.adapter(ErrorResponse.class);
   }
 
-  /**
-   * Executes a POST request
-   *
-   * @param requestBody Request body object
-   * @return Parsed response object
-   * @throws ReSMSException if fails
-   */
   public SendSmsResponse sendSms(SendSmsRequest requestBody) throws ReSMSException {
     String jsonBody = requestAdapter.toJson(requestBody);
 
@@ -89,7 +81,6 @@ public class SmsRepository {
               throw new MessageStatusUpdateFailedException(errorMessage);
           default -> throw new ReSMSException(errorResponse.getStatus() + " " + errorMessage);
         }
-
       } catch (IOException e) {
         throw new ReSMSException("Failed to parse error response", e);
       }
