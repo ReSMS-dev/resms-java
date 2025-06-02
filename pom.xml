@@ -98,6 +98,7 @@
           <formats>
             <format>
               <includes>
+                <include>.gitattributes</include>
                 <include>.gitignore</include>
               </includes>
               <trimTrailingWhitespace/>
