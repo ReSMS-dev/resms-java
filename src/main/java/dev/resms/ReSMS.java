@@ -45,7 +45,8 @@ public class ReSMS {
    * @throws ReSMSException if fails
    */
   public SendSmsResponse send(@NonNull String to, @NonNull String message) throws ReSMSException {
-    return smsService.send(to, message);
+    SendSmsRequest request = new SendSmsRequest(to, message);
+    return this.send(request);
   }
 
   /**
