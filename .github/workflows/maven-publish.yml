@@ -22,8 +22,6 @@ jobs:
         server-password: "CENTRAL_TOKEN_PASSWORD"
         gpg-private-key: "GPG_SIGNING_KEY"
         gpg-passphrase: "GPG_SIGNING_KEY_PASSWORD"
-    - name: "Set version"
-      run: "mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}"
     - name: "Build with Maven"
       run: "mvn -B package --file pom.xml"
     - name: "Publish package"
