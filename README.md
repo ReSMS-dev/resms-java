@@ -1,4 +1,5 @@
 # ReSMS SDK for Java
+
 Java SDK for ReSMS, a simple and powerful SMS API.
 
 ## Installation
@@ -12,6 +13,7 @@ Java SDK for ReSMS, a simple and powerful SMS API.
 ```
 
 ## Setup
+
 You need to get an API key on [ReSMS Dashboard](https://resms.dev/dashboard).
 Then import the package and create a new instance of the `ReSMS` class with your API key.
 
@@ -24,7 +26,9 @@ ReSMS smsWithCustomTimeout = new ReSMS("your_api_key_here", 30);
 ```
 
 ## Usage
+
 Send you can send your SMS:
+
 ```java
 public class SmsExample {
     public static void main(String[] args) {
@@ -51,6 +55,7 @@ public class SmsExample {
 ```
 
 ## Error Handling
+
 The SDK throws different types of exceptions:
 
 ```ReSMSException```: Thrown when the API returns a non-2xx response.
@@ -60,10 +65,13 @@ The SDK throws different types of exceptions:
 ```InterruptedException```: Thrown if the HTTP request is interrupted.
 
 ## Documentationc
+
 The full documentation is available at [dev.resms.dev/docs](https://resms.dev/docs).
 
 ## License
+
 This project is licensed under the MIT License.
 
 ## Note
+
 This is a simple SDK for ReSMS. More features and improvements will be added in the future. If you have any suggestions or issues, please open an issue on GitHub.

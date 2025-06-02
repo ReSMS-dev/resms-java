@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public abstract class Response {
-    private String status;
+  private String status;
 }

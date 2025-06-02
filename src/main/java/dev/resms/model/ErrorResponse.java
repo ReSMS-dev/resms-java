@@ -4,11 +4,11 @@ import lombok.Getter;
 
 @Getter
 public class ErrorResponse extends Response {
-    private ErrorDetails error;
+  private ErrorDetails error;
 
-    @Getter
-    public static class ErrorDetails {
-        private String name;
-        private String message;
-    }
+  @Getter
+  public static class ErrorDetails {
+    private String name;
+    private String message;
+  }
 }

@@ -1,40 +1,35 @@
-name: Publish package to the Maven Central Repository
-
-on:
+---
+name: "Publish package to the Maven Central Repository"
+"on":
   release:
-    types: [created]
-
+    types:
+    - "created"
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
     permissions:
-      contents: read
-      packages: write
-
+      contents: "read"
+      packages: "write"
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Maven Central Repository
-      uses: actions/setup-java@v4
+    - uses: "actions/checkout@v4"
+    - name: "Set up Maven Central Repository"
+      uses: "actions/setup-java@v4"
       with:
-        java-version: '23'
-        distribution: 'temurin'
-        server-id: central
-        server-username: MAVEN_USERNAME
-        server-password: MAVEN_PASSWORD
-        gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
-        gpg-passphrase: MAVEN_GPG_PASSPHRASE
-        
-    - name: Set version
-      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
-
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
-    - name: Publish package
-      run: mvn -P release --batch-mode deploy -DskipTests
-
+        java-version: "23"
+        distribution: "temurin"
+        server-id: "central"
+        server-username: "CENTRAL_TOKEN_USERNAME"
+        server-password: "CENTRAL_TOKEN_PASSWORD"
+        gpg-private-key: "GPG_SIGNING_KEY"
+        gpg-passphrase: "GPG_SIGNING_KEY_PASSWORD"
+    - name: "Set version"
+      run: "mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}"
+    - name: "Build with Maven"
+      run: "mvn -B package --file pom.xml"
+    - name: "Publish package"
+      run: "mvn -P release --batch-mode deploy -DskipTests"
       env:
-        MAVEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
-        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
+        CENTRAL_TOKEN_USERNAME: "${{ secrets.CENTRAL_TOKEN_USERNAME }}"
+        CENTRAL_TOKEN_PASSWORD: "${{ secrets.CENTRAL_TOKEN_PASSWORD }}"
+        GPG_SIGNING_KEY: "${{ secrets.GPG_SIGNING_KEY }}"
+        GPG_SIGNING_KEY_PASSWORD: "${{ secrets.GPG_SIGNING_KEY_PASSWORD }}"

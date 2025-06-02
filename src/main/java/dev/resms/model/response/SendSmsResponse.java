@@ -3,15 +3,13 @@ package dev.resms.model.response;
 import dev.resms.model.Response;
 import lombok.Getter;
 
-/**
- * Response object returned after sending an SMS
- */
+/** Response object returned after sending an SMS */
 @Getter
 public class SendSmsResponse extends Response {
-    private SensSmsResponseData data;
+  private SensSmsResponseData data;
 
-    @Getter
-    public static class SensSmsResponseData {
-        private String messageId;
-    }
+  @Getter
+  public static class SensSmsResponseData {
+    private String messageId;
+  }
 }
