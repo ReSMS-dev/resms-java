@@ -18,8 +18,7 @@ public class ReSMS {
    * @param timeoutSeconds HTTP request timeout in seconds
    */
   public ReSMS(@NonNull String apiKey, int timeoutSeconds) {
-    ReSMSConfig config = new ReSMSConfig(apiKey, timeoutSeconds);
-    this.smsService = new SmsService(config);
+    this(new ReSMSConfig(apiKey, timeoutSeconds));
   }
 
   /**
@@ -28,8 +27,7 @@ public class ReSMS {
    * @param apiKey API key for authentication
    */
   public ReSMS(@NonNull String apiKey) {
-    ReSMSConfig config = new ReSMSConfig(apiKey);
-    this.smsService = new SmsService(config);
+    this(new ReSMSConfig(apiKey));
   }
 
   public ReSMS(@NonNull ReSMSConfig config) {
