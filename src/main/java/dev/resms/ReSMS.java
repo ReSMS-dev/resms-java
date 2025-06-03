@@ -12,16 +12,6 @@ public class ReSMS {
   private final SmsService smsService;
 
   /**
-   * Creates a new ReSMS client
-   *
-   * @param apiKey API key for authentication
-   * @param timeoutSeconds HTTP request timeout in seconds
-   */
-  public ReSMS(@NonNull String apiKey, int timeoutSeconds) {
-    this(new ReSMSConfig(apiKey, timeoutSeconds));
-  }
-
-  /**
    * Creates a new ReSMS client with a default timeout of 10 seconds
    *
    * @param apiKey API key for authentication

@@ -14,6 +14,7 @@ import dev.resms.model.request.SendSmsRequest;
 import dev.resms.model.response.SendSmsResponse;
 import java.io.IOException;
 import java.net.URI;
+import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.apache.hc.core5.http.HttpStatus;
@@ -22,12 +23,14 @@ public class ReSMSApiClient {
   private static final String SEND_SMS_PATH = "sms/send";
 
   private final ReSMSConfig config;
+  private final HttpClient httpClient;
   private final JsonAdapter<SendSmsRequest> requestAdapter;
   private final JsonAdapter<SendSmsResponse> responseAdapter;
   private final JsonAdapter<ErrorResponse> errorResponseAdapter;
 
   public ReSMSApiClient(ReSMSConfig config) {
     this.config = config;
+    this.httpClient = HttpClient.newBuilder().build();
 
     Moshi moshi = new Moshi.Builder().build();
 
@@ -49,7 +52,7 @@ public class ReSMSApiClient {
 
     HttpResponse<String> httpResponse;
     try {
-      httpResponse = config.getHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+      httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
     } catch (IOException e) {
       throw new ReSMSException("Failed to send HTTP request", e);
     } catch (InterruptedException e) {
