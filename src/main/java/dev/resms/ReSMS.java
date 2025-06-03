@@ -32,9 +32,10 @@ public class ReSMS {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(@NonNull String to, @NonNull String message) throws ReSMSException {
+  public SendSmsResponse sendSms(@NonNull String to, @NonNull String message)
+      throws ReSMSException {
     SendSmsRequest request = new SendSmsRequest(to, message);
-    return this.send(request);
+    return this.sendSms(request);
   }
 
   /**
@@ -44,7 +45,7 @@ public class ReSMS {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(@NonNull SendSmsRequest request) throws ReSMSException {
-    return smsService.send(request);
+  public SendSmsResponse sendSms(@NonNull SendSmsRequest request) throws ReSMSException {
+    return smsService.sendSms(request);
   }
 }

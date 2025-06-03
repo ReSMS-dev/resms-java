@@ -23,7 +23,7 @@ public class SmsService {
    * @return SendSmsResponse containing the message ID and status
    * @throws ReSMSException if fails
    */
-  public SendSmsResponse send(@NonNull SendSmsRequest request) throws ReSMSException {
+  public SendSmsResponse sendSms(@NonNull SendSmsRequest request) throws ReSMSException {
     SendSmsValidator.validate(request);
     return apiClient.sendSms(request);
   }
