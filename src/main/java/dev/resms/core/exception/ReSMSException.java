@@ -1,4 +1,4 @@
-package dev.resms.exception;
+package dev.resms.core.exception;
 
 public class ReSMSException extends RuntimeException {
   public ReSMSException(String message) {

@@ -1,51 +1,20 @@
 package dev.resms;
 
-import dev.resms.config.ReSMSConfig;
-import dev.resms.exception.ReSMSException;
-import dev.resms.model.request.SendSmsRequest;
-import dev.resms.model.response.SendSmsResponse;
-import dev.resms.service.SmsService;
-import lombok.NonNull;
+import dev.resms.services.sms.Sms;
+import lombok.RequiredArgsConstructor;
 
 /** ReSMS Java SDK - Client principal */
+@RequiredArgsConstructor
 public class ReSMS {
-  private final SmsService smsService;
+  /** The API key for the ReSMS service. */
+  private final String apiKey;
 
   /**
-   * Creates a new ReSMS client with a default timeout of 10 seconds
+   * Returns an Sms object that can be used to interact with the SMS service.
    *
-   * @param apiKey API key for authentication
+   * @return An Sms object.
    */
-  public ReSMS(@NonNull String apiKey) {
-    this(new ReSMSConfig(apiKey));
-  }
-
-  public ReSMS(@NonNull ReSMSConfig config) {
-    this.smsService = new SmsService(config);
-  }
-
-  /**
-   * Sends an SMS message - Main method
-   *
-   * @param to Phone number to send the message to
-   * @param message Message content
-   * @return SendSmsResponse containing the message ID and status
-   * @throws ReSMSException if fails
-   */
-  public SendSmsResponse sendSms(@NonNull String to, @NonNull String message)
-      throws ReSMSException {
-    SendSmsRequest request = new SendSmsRequest(to, message);
-    return this.sendSms(request);
-  }
-
-  /**
-   * Sends an SMS message using request object
-   *
-   * @param request SendSmsRequest object
-   * @return SendSmsResponse containing the message ID and status
-   * @throws ReSMSException if fails
-   */
-  public SendSmsResponse sendSms(@NonNull SendSmsRequest request) throws ReSMSException {
-    return smsService.sendSms(request);
+  public Sms sms() {
+    return new Sms(apiKey);
   }
 }

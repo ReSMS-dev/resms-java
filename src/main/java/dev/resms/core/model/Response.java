@@ -1,4 +1,4 @@
-package dev.resms.model;
+package dev.resms.core.model;
 
 import lombok.Getter;
 

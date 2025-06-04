@@ -1,9 +1,9 @@
-package dev.resms.model.response;
+package dev.resms.services.sms.model;
 
-import dev.resms.model.Response;
+import dev.resms.core.model.Response;
 import lombok.Getter;
 
-/** Response object returned after sending an SMS */
+/** Represents a response after sending an SMS. */
 @Getter
 public class SendSmsResponse extends Response {
   private SendSmsResponseData data;
