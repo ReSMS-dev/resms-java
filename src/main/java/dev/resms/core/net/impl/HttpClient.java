@@ -17,7 +17,7 @@ import okhttp3.Response;
 public class HttpClient implements IHttpClient<Response> {
 
   /** The base URL for the API. */
-  public static final String BASE_API = "https://api.resms.dev/";
+  public static final String BASE_API = "https://api.resms.dev";
 
   /** The OkHttpClient instance for handling HTTP requests. */
   private final OkHttpClient httpClient;
@@ -37,7 +37,7 @@ public class HttpClient implements IHttpClient<Response> {
    * @return An {@link AbstractHttpResponse} representing the response from the server.
    */
   @Override
-  public AbstractHttpResponse<Response> perform(
+  public AbstractHttpResponse perform(
       final String path, final String apiKey, final HttpMethod method, final String payload) {
 
     RequestBody requestBody = null;
