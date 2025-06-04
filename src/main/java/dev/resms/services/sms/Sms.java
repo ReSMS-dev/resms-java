@@ -27,7 +27,7 @@ public class Sms extends BaseService {
    * @return The response indicating the status of the sms sending.
    * @throws ReSMSException If an error occurs while sending the SMS.
    */
-  public SendSmsResponse send(SendSmsOptions sendSmsOptions) {
+  public SendSmsResponse send(SendSmsOptions sendSmsOptions) throws ReSMSException {
     SendSmsOptionsValidator.validate(sendSmsOptions);
 
     String payload = super.reSMSMapper.toJson(sendSmsOptions);
