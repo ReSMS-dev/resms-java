@@ -9,7 +9,7 @@ public interface IMapper {
    * @param object The object to be converted to JSON.
    * @return The JSON representation of the object.
    */
-  String writeValue(Object object);
+  String toJson(Object object);
 
   /**
    * Converts the provided JSON value into an instance of the specified class.
@@ -19,5 +19,5 @@ public interface IMapper {
    * @param <T> The type of the resulting object.
    * @return An instance of the specified class with values from the JSON value.
    */
-  <T> T readValue(String value, Class<T> clazz);
+  <T> T fromJson(String value, Class<T> clazz);
 }

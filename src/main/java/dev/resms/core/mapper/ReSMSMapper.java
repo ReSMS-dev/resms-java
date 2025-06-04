@@ -22,7 +22,7 @@ public class ReSMSMapper implements IMapper {
    * @return The JSON representation of the object.
    */
   @Override
-  public String writeValue(Object object) {
+  public String toJson(Object object) {
     return moshi.adapter(Object.class).toJson(object);
   }
 
@@ -35,7 +35,7 @@ public class ReSMSMapper implements IMapper {
    * @return An instance of the specified class with values from the JSON value.
    */
   @Override
-  public <T> T readValue(String value, Class<T> clazz) {
+  public <T> T fromJson(String value, Class<T> clazz) {
     try {
       return moshi.adapter(clazz).fromJson(value);
     } catch (IOException e) {
