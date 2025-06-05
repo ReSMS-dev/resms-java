@@ -1,5 +1,6 @@
 package dev.resms;
 
+import dev.resms.services.otp.Otp;
 import dev.resms.services.sms.Sms;
 import lombok.RequiredArgsConstructor;
 
@@ -16,5 +17,14 @@ public class ReSMS {
    */
   public Sms sms() {
     return new Sms(apiKey);
+  }
+
+  /**
+   * Returns an Otp object that can be used to interact with the Otp service.
+   *
+   * @return An Otp object.
+   */
+  public Otp otp() {
+    return new Otp(apiKey);
   }
 }
