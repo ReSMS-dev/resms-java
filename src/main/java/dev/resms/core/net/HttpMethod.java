@@ -4,4 +4,5 @@ package dev.resms.core.net;
 public enum HttpMethod {
   GET,
   POST,
+  DELETE,
 }
