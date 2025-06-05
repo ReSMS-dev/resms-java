@@ -4,6 +4,7 @@ import dev.resms.core.exception.ReSMSException;
 import dev.resms.core.net.AbstractHttpResponse;
 import dev.resms.core.net.HttpMethod;
 import dev.resms.core.service.BaseService;
+import dev.resms.services.otp.model.CreateOtpOptions;
 import dev.resms.services.otp.model.CreateOtpResponse;
 import dev.resms.services.otp.model.DeleteOtpResponse;
 import dev.resms.services.otp.model.VerifyOtpOptions;
@@ -26,12 +27,12 @@ public class Otp extends BaseService {
   /**
    * Create an OTP based on the provided OTP request
    *
-   * @param createOtpResponse The request containing OTP details.
+   * @param createOtpOptions The request containing OTP details.
    * @return The response indicating the status of the OTP creation.
    * @throws ReSMSException If an error occurs while creating the OTP.
    */
-  public CreateOtpResponse create(CreateOtpResponse createOtpResponse) throws ReSMSException {
-    String payload = super.reSMSMapper.toJson(createOtpResponse);
+  public CreateOtpResponse create(CreateOtpOptions createOtpOptions) throws ReSMSException {
+    String payload = super.reSMSMapper.toJson(createOtpOptions);
 
     AbstractHttpResponse<String> response =
         super.httpClient.perform(CREATE_OTP_PATH, apiKey, HttpMethod.POST, payload);
@@ -41,9 +42,7 @@ public class Otp extends BaseService {
           "Failed to create otp: " + response.getCode() + " " + response.getBody());
     }
 
-    String responseBody = response.getBody();
-
-    return reSMSMapper.fromJson(responseBody, CreateOtpResponse.class);
+    return reSMSMapper.fromJson(response.getBody(), CreateOtpResponse.class);
   }
 
   /**
@@ -64,9 +63,7 @@ public class Otp extends BaseService {
           "Failed to create otp: " + response.getCode() + " " + response.getBody());
     }
 
-    String responseBody = response.getBody();
-
-    return reSMSMapper.fromJson(responseBody, VerifyOtpResponse.class);
+    return reSMSMapper.fromJson(response.getBody(), VerifyOtpResponse.class);
   }
 
   /**
@@ -87,8 +84,6 @@ public class Otp extends BaseService {
           "Failed to create otp: " + response.getCode() + " " + response.getBody());
     }
 
-    String responseBody = response.getBody();
-
-    return reSMSMapper.fromJson(responseBody, DeleteOtpResponse.class);
+    return reSMSMapper.fromJson(response.getBody(), DeleteOtpResponse.class);
   }
 }

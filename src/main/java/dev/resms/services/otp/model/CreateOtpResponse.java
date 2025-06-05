@@ -1,9 +1,10 @@
 package dev.resms.services.otp.model;
 
+import dev.resms.core.model.Response;
 import lombok.Getter;
 
 @Getter
-public class CreateOtpResponse {
+public class CreateOtpResponse extends Response {
   private CreateOtpResponseData data;
 
   @Getter
