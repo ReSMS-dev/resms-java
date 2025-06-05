@@ -216,7 +216,6 @@
             <configuration>
               <publishingServerId>central</publishingServerId>
               <autoPublish>true</autoPublish>
-              <waitUntil>publishing</waitUntil>
             </configuration>
           </plugin>
         </plugins>
