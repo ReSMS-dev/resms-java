@@ -132,13 +132,6 @@
               <sortPlugins>groupId,artifactId</sortPlugins>
             </sortPom>
           </pom>
-          <yaml>
-            <includes>
-              <include>**/*.yaml</include>
-              <include>**/*.yml</include>
-            </includes>
-            <jackson/>
-          </yaml>
         </configuration>
       </plugin>
       <plugin>
@@ -167,6 +160,12 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
             <version>${maven-gpg-plugin.version}</version>
+            <configuration>
+              <gpgArguments>
+                <arg>--pinentry-mode</arg>
+                <arg>loopback</arg>
+              </gpgArguments>
+            </configuration>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
