@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Maven Central](https://img.shields.io/maven-central/v/dev.resms/resms-java-sdk.svg)](https://search.maven.org/artifact/dev.resms/resms-java-sdk)
-[![Java Version](https://img.shields.io/badge/Java-11%2B-blue)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+[![Java Version](https://img.shields.io/badge/Java-17%2B-blue)](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
 
 A lightweight, easy-to-use Java SDK for [ReSMS](https://resms.dev) - the simple and powerful SMS API for developers.
 
@@ -16,7 +16,7 @@ A lightweight, easy-to-use Java SDK for [ReSMS](https://resms.dev) - the simple 
 
 ## 📋 Requirements
 
-- Java 11 or higher
+- Java 17 or higher
 - A ReSMS account with an API key
 
 ## 📦 Installation
@@ -27,20 +27,20 @@ A lightweight, easy-to-use Java SDK for [ReSMS](https://resms.dev) - the simple 
 <dependency>
     <groupId>dev.resms</groupId>
     <artifactId>resms-java-sdk</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'dev.resms:resms-java-sdk:1.0.1'
+implementation 'dev.resms:resms-java-sdk:1.1.0'
 ```
 
 ### Gradle (Kotlin DSL)
 
 ```kotlin
-implementation("dev.resms:resms-java-sdk:1.0.1")
+implementation("dev.resms:resms-java-sdk:1.1.0")
 ```
 
 ## 🚀 Quick Start
