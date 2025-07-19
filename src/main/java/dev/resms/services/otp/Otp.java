@@ -6,14 +6,12 @@ import dev.resms.core.net.HttpMethod;
 import dev.resms.core.service.BaseService;
 import dev.resms.services.otp.model.CreateOtpOptions;
 import dev.resms.services.otp.model.CreateOtpResponse;
-import dev.resms.services.otp.model.DeleteOtpResponse;
 import dev.resms.services.otp.model.VerifyOtpOptions;
 import dev.resms.services.otp.model.VerifyOtpResponse;
 
 public class Otp extends BaseService {
   private static final String CREATE_OTP_PATH = "/otp";
   private static final String VERIFY_OTP_PATH = "/otp/verify";
-  private static final String DELETE_OTP_PATH = "/otp";
 
   /**
    * Constructs an instance of the {@code Otp} class.
@@ -64,26 +62,5 @@ public class Otp extends BaseService {
     }
 
     return reSMSMapper.fromJson(response.getBody(), VerifyOtpResponse.class);
-  }
-
-  /**
-   * Delete an OTP based on its id
-   *
-   * @param otpId The id of the OTP to delete.
-   * @return The response indicating the status of the OTP deletion.
-   * @throws ReSMSException If an error occurs while deleting the OTP.
-   */
-  public DeleteOtpResponse delete(String otpId) throws ReSMSException {
-    String payload = "{\"otpId\": \"" + otpId + "\"}";
-
-    AbstractHttpResponse<String> response =
-        super.httpClient.perform(DELETE_OTP_PATH, apiKey, HttpMethod.DELETE, payload);
-
-    if (!response.isSuccessful()) {
-      throw new ReSMSException(
-          "Failed to create otp: " + response.getCode() + " " + response.getBody());
-    }
-
-    return reSMSMapper.fromJson(response.getBody(), DeleteOtpResponse.class);
   }
 }

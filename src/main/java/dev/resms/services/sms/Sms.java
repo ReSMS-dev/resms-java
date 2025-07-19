@@ -9,7 +9,7 @@ import dev.resms.services.sms.model.SendSmsResponse;
 import dev.resms.services.sms.validator.SendSmsOptionsValidator;
 
 public class Sms extends BaseService {
-  private static final String SEND_SMS_PATH = "/sms/send";
+  private static final String SEND_SMS_PATH = "/sms";
 
   /**
    * Constructs an instance of the {@code Sms} class.
