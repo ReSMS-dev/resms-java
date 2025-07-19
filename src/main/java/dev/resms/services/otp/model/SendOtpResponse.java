@@ -4,11 +4,11 @@ import dev.resms.core.model.Response;
 import lombok.Getter;
 
 @Getter
-public class CreateOtpResponse extends Response {
-  private CreateOtpResponseData data;
+public class SendOtpResponse extends Response {
+  private SendOtpResponseData data;
 
   @Getter
-  public static class CreateOtpResponseData {
+  public static class SendOtpResponseData {
     private String phoneNumber;
     private String expiresAt;
   }
