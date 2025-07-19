@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class CreateOtpOptions {
+public class SendOtpOptions {
   private String to;
   private String message;
   private String senderId;

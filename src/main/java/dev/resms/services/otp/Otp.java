@@ -4,13 +4,13 @@ import dev.resms.core.exception.ReSMSException;
 import dev.resms.core.net.AbstractHttpResponse;
 import dev.resms.core.net.HttpMethod;
 import dev.resms.core.service.BaseService;
-import dev.resms.services.otp.model.CreateOtpOptions;
-import dev.resms.services.otp.model.CreateOtpResponse;
+import dev.resms.services.otp.model.SendOtpOptions;
+import dev.resms.services.otp.model.SendOtpResponse;
 import dev.resms.services.otp.model.VerifyOtpOptions;
 import dev.resms.services.otp.model.VerifyOtpResponse;
 
 public class Otp extends BaseService {
-  private static final String CREATE_OTP_PATH = "/otp";
+  private static final String SEND_OTP_PATH = "/otp";
   private static final String VERIFY_OTP_PATH = "/otp/verify";
 
   /**
@@ -23,24 +23,24 @@ public class Otp extends BaseService {
   }
 
   /**
-   * Create an OTP based on the provided OTP request
+   * Send an OTP based on the provided OTP request
    *
-   * @param createOtpOptions The request containing OTP details.
-   * @return The response indicating the status of the OTP creation.
-   * @throws ReSMSException If an error occurs while creating the OTP.
+   * @param sendOtpOptions The request containing OTP details.
+   * @return The response indicating the status of the OTP.
+   * @throws ReSMSException If an error occurs while sending the OTP.
    */
-  public CreateOtpResponse create(CreateOtpOptions createOtpOptions) throws ReSMSException {
-    String payload = super.reSMSMapper.toJson(createOtpOptions);
+  public SendOtpResponse send(SendOtpOptions sendOtpOptions) throws ReSMSException {
+    String payload = super.reSMSMapper.toJson(sendOtpOptions);
 
     AbstractHttpResponse<String> response =
-        super.httpClient.perform(CREATE_OTP_PATH, apiKey, HttpMethod.POST, payload);
+        super.httpClient.perform(SEND_OTP_PATH, apiKey, HttpMethod.POST, payload);
 
     if (!response.isSuccessful()) {
       throw new ReSMSException(
           "Failed to create otp: " + response.getCode() + " " + response.getBody());
     }
 
-    return reSMSMapper.fromJson(response.getBody(), CreateOtpResponse.class);
+    return reSMSMapper.fromJson(response.getBody(), SendOtpResponse.class);
   }
 
   /**
