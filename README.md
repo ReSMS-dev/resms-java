@@ -82,6 +82,8 @@ public class Main {
 For complete documentation, visit [resms.dev/docs](https://docs.resms.dev/).
 sure to update tests as appropriate.
 
+Here is an implementation example of ReSMS Java package: https://github.com/ReSMS-dev/resms-java-example
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
